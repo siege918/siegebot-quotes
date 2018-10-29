@@ -1,17 +1,16 @@
 var execSync = require('child_process').execSync;
 var exec = require('child_process').exec;
-var cachedLength = {};
+var cachedLengths = {};
 
 function getLength(message, config, callback) {
-    if (!cachedLength[config.file])
+    if (!cachedLengths[config.file])
     {
         var output = execSync("wc " + config.file).toString().trim();
-        console.log(output);
         var spaceIndex = output.indexOf(" ");
         cachedLengths[config.file] = parseInt(output.substring(0, spaceIndex)) + 1;
     }
     callback(cachedLengths[config.file]);
-    return cachedLength[config.file];
+    return cachedLengths[config.file];
 };
     
 function search(message, config, callback) {
