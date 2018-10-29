@@ -39,7 +39,7 @@ function get (message, config, callback) {
     if (!quoteId) {
         quoteId = Math.floor((Math.random() * getLength(message, config))) + 1;
     }
-    exec("awk 'NR==" + quoteId + "' " + config.file, function (error, result) {
+    exec("awk NR==" + quoteId + " " + config.file, function (error, result) {
         callback(result.trim().replace(/\\n/g, "\n")  + " (" + (quoteId) + ")");
     });
 }
@@ -62,7 +62,7 @@ function searchPromise(message, config) {
 function getPromise(message, config) {
     return new Promise(function(resolve) {
         get(message, config, function(quote) {
-            message.channel.sendMessage(quote);
+            message.channel.send(quote);
             resolve(quote);
         })
     });
