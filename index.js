@@ -79,7 +79,7 @@ function countPromise(message, config) {
 }
 
 module.exports = {
-	length: getLength,
+	length: countPromise,
 	search: searchPromise,
 	get: getPromise
 }
