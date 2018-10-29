@@ -39,8 +39,8 @@ function get (message, config, callback) {
     if (!quoteId) {
         quoteId = Math.floor((Math.random() * getLength(message, config))) + 1;
     }
-    exec("awk 'NR==" + index + "' " + config.file, function (error, result) {
-        callback(result.trim().replace(/\\n/g, "\n")  + " (" + (index) + ")");
+    exec("awk 'NR==" + quoteId + "' " + config.file, function (error, result) {
+        callback(result.trim().replace(/\\n/g, "\n")  + " (" + (quoteId) + ")");
     });
 }
 
