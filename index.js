@@ -9,7 +9,8 @@ function getLength(message, config, callback) {
         var spaceIndex = output.indexOf(" ");
         cachedLengths[config.file] = parseInt(output.substring(0, spaceIndex)) + 1;
     }
-    callback(cachedLengths[config.file]);
+    if (callback)
+        callback(cachedLengths[config.file]);
     return cachedLengths[config.file];
 };
     
