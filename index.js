@@ -11,6 +11,7 @@ function getLength(message, config, callback) {
         cachedLengths[config.file] = parseInt(output.substring(0, spaceIndex)) + 1;
     }
     callback(cachedLengths[config.file]);
+    return cachedLength[config.file];
 };
     
 function search(message, config, callback) {
@@ -36,7 +37,7 @@ function get (message, config, callback) {
     }
 
     if (!quoteId) {
-        quoteId = Math.floor((Math.random() * getLength())) + 1;
+        quoteId = Math.floor((Math.random() * getLength(message, config))) + 1;
     }
     exec("awk 'NR==" + index + "' " + config.file, function (error, result) {
         callback(result.trim().replace(/\\n/g, "\n")  + " (" + (index) + ")");
