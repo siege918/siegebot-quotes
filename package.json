@@ -1,0 +1,15 @@
+{
+  "name": "siegebot-quotes",
+  "version": "0.0.1",
+  "description": "Post quotes from a newline-delimited list of quotes",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "keywords": [
+    "Siegebot",
+    "YK"
+  ],
+  "author": "Siege",
+  "license": "MIT"
+}
