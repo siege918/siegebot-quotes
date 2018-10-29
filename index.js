@@ -39,7 +39,7 @@ function get (message, config, callback) {
         index = Math.floor((Math.random() * getLength())) + 1;
     }
     exec("awk 'NR==" + index + "' " + config.file, function (error, result) {
-        callback(result.substring(1, result.toString().length - 4).replace(/\\n/g, "\n")  + " (" + (index) + ")");
+        callback(result.trim().replace(/\\n/g, "\n")  + " (" + (index) + ")");
     });
 }
 
