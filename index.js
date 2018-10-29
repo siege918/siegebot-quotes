@@ -18,7 +18,7 @@ function search(message, config, callback) {
     var q = message.content.substring(message.content.indexOf(' ')).trim();
     exec('grep -n -i "' + q + '" ' + config.file + ' |cut -f1 -d:', function (error, result)
     {
-        var resultString = result.toString().replace(/[\n\r]/g, ", ").replace(/[, , ]/g, ", ");
+        var resultString = result.toString().replace(/[\n\r]/g, ", ");
         resultString = resultString.substring(0, resultString.length - 2);
         callback(resultString);
     });
@@ -72,7 +72,7 @@ function countPromise(message, config) {
     return new Promise(function(resolve) {
         getLength(
             message, config, function(count) {
-                message.channel.send("There are " + getLength(message, config) + " quotes.");
+                message.channel.sendMessage("There are " + getLength(message, config) + " quotes.");
                 resolve("There are " + getLength(message, config) + " quotes.");
             }
         );
